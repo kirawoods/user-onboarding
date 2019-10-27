@@ -30,11 +30,11 @@ const NewUserForm = props => {
         )}
 
         <label>
-          <Field type="checkbox" name="tos" checked={props.values.tos} />
-          Accept TOS
+          <Field type="checkbox" name="terms" checked={props.values.terms} />
+          <span>Accept Terms of Service</span>
         </label>
-        {props.touched.tos && props.errors.tos && (
-          <p className="error-message">{props.errors.tos}</p>
+        {props.touched.terms && props.errors.terms && (
+          <p className="error-message">{props.errors.terms}</p>
         )}
 
         <Field component="select" name="role">
@@ -46,15 +46,13 @@ const NewUserForm = props => {
       </Form>
 
       <div className="user-display">
-        {users.map(user => {
-          return (
-            <div key={user.id}>
-              <h3>{user.name}</h3>
-              <p>{user.email}</p>
-              <p>{user.role}</p>
-            </div>
-          );
-        })}
+        {users.map(user => (
+          <div key={user.id}>
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+            <p>{user.role}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -66,6 +64,7 @@ const myMapPropsToValues = props => {
     name: props.name || "",
     email: props.email || "",
     password: props.password || "",
+    terms: props.terms || false,
     role: props.role || ""
   };
   return returnObject;
@@ -93,14 +92,14 @@ const yupSchema = Yup.object().shape({
     .email("Must enter a valid email address"),
   password: Yup.string()
     .required("Please enter a password")
-    .min(8, "Your password must contain at least 8 characters")
-  //   tos: Yup.bool()
-  //     .required("Please agree to our terms of service")
-  //     .oneOf([true], "Please agree to our terms of service")
+    .min(8, "Your password must contain at least 8 characters"),
+  terms: Yup.bool()
+    .required("Please agree to our Terms of Service")
+    .oneOf([true], "Please agree to our Terms of Service")
 });
 
 const formikObj = {
-  mapPropstoValues: myMapPropsToValues,
+  mapPropsToValues: myMapPropsToValues,
   validationSchema: yupSchema,
   handleSubmit: myHandleSubmit
 };
