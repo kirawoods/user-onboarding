@@ -13,46 +13,71 @@ const NewUserForm = props => {
   }, [props.status]);
 
   return (
-    <div className="new-user-form">
-      <h3>Add New User</h3>
-      <Form>
-        <Field type="text" name="name" placeholder="Name" />
-        {props.touched.name && props.errors.name && (
-          <p className="error-message">{props.errors.name}</p>
-        )}
-        <Field type="email" name="email" placeholder="Email" />
-        {props.touched.email && props.errors.email && (
-          <p className="error-message">{props.errors.email}</p>
-        )}
-        <Field type="password" name="password" placeholder="Password" />
-        {props.touched.password && props.errors.password && (
-          <p className="error-message">{props.errors.password}</p>
-        )}
+    <div className="app-container">
+      <div className="new-user-form">
+        <h3 className="form-header">Add New User</h3>
+        <Form className="form-input-container">
+          <Field
+            className="form-input"
+            type="text"
+            name="name"
+            placeholder="  Name"
+          />
+          {props.touched.name && props.errors.name && (
+            <p className="error-message">{props.errors.name}</p>
+          )}
+          <Field
+            className="form-input"
+            type="email"
+            name="email"
+            placeholder="  Email"
+          />
+          {props.touched.email && props.errors.email && (
+            <p className="error-message">{props.errors.email}</p>
+          )}
+          <Field
+            className="form-input"
+            type="password"
+            name="password"
+            placeholder="  Password"
+          />
+          {props.touched.password && props.errors.password && (
+            <p className="error-message">{props.errors.password}</p>
+          )}
 
-        <label>
-          <Field type="checkbox" name="terms" checked={props.values.terms} />
-          <span>Accept Terms of Service</span>
-        </label>
-        {props.touched.terms && props.errors.terms && (
-          <p className="error-message">{props.errors.terms}</p>
-        )}
+          <label className="terms-of-service-input">
+            <Field type="checkbox" name="terms" checked={props.values.terms} />
+            <span className="terms-of-service">Accept Terms of Service</span>
+          </label>
+          {props.touched.terms && props.errors.terms && (
+            <p className="error-message">{props.errors.terms}</p>
+          )}
 
-        <Field component="select" name="role">
-          <option value="Software Engineer">Software Engineer</option>
-          <option value="Product Manager">Product Manager</option>
-          <option value="Designer">Designer</option>
-        </Field>
-        <button type="submit">Submit</button>
-      </Form>
+          <Field className="form-input" component="select" name="role">
+            <option value="Select Your Role">
+              Select Your Role (not required)
+            </option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Product Manager">Product Manager</option>
+            <option value="Designer">Designer</option>
+          </Field>
+          <button className="submit-button" type="submit">
+            Submit
+          </button>
+        </Form>
+      </div>
 
       <div className="user-display">
-        {users.map(user => (
-          <div key={user.id}>
-            <h3>{user.name}</h3>
-            <p>{user.email}</p>
-            <p>{user.role}</p>
-          </div>
-        ))}
+        <h3 className="user-header">Users</h3>
+        <div className="user-card-container">
+          {users.map(user => (
+            <div className="user-card" key={user.id}>
+              <h3 className="user-name">{user.name}</h3>
+              <p> {user.email}</p>
+              <p> {user.role}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

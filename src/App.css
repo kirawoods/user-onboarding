@@ -20,3 +20,79 @@
 .App-link {
   color: #09d3ac;
 }
+
+.app-container {
+  display: flex;
+}
+
+.new-user-form {
+  width: 50%;
+  padding: 60px 20px 0px 20px;
+  background-color: lightseagreen;
+  height: 100vh;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  color: white;
+  text-align: center;
+}
+
+.form-input {
+  margin: 20px;
+  border: none;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.terms-of-service {
+  color: white;
+}
+
+.terms-of-service-input {
+  padding: 0px 0px 0px 20px;
+}
+
+.error-message {
+  color: white;
+}
+
+.submit-button {
+  background-color: teal;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  height: 40px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+}
+
+.user-display {
+  width: 50%;
+  padding: 20px;
+}
+
+.user-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-header {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.user-card {
+  width: 33%;
+}
+
+.user-name {
+  color: teal;
+  text-align: center;
+}
